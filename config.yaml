@@ -1,0 +1,46 @@
+# INFINITY REASONER CONFIGURATION
+
+# Model Settings
+model:
+  name: "microsoft/DialoGPT-medium"  # Start with lighter model
+  device: "auto"  # auto, cuda, cpu
+  max_length: 512
+  temperature: 0.8
+  top_p: 0.9
+
+# Training Settings
+training:
+  iterations: 10
+  tasks_per_iteration: 5
+  max_execution_time: 30
+  learning_rate: 1e-5
+  batch_size: 4
+
+# Safety Settings
+safety:
+  enable_monitoring: true
+  require_human_approval: true
+  max_dangerous_tasks: 0
+  execution_timeout: 10
+  sandbox_mode: true
+
+# Logging Settings
+logging:
+  level: "INFO"
+  log_file: "infinity.log"
+  enable_wandb: false
+  wandb_project: "infinity-reasoner"
+
+# Performance Monitoring
+monitoring:
+  enable_metrics: true
+  metrics_port: 8080
+  save_interval: 100
+  backup_models: true
+
+# Task Generation
+task_generation:
+  difficulty_range: [0.3, 0.8]
+  task_types: ["deduction", "abduction", "induction"]
+  max_code_length: 1000
+  enable_validation: true
